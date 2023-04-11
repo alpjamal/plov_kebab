@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 
 import '../../../../utils/constants.dart';
+import '../../../widgets/my_container.dart';
 
 class MyOrdersTab extends StatelessWidget {
   const MyOrdersTab({super.key});
@@ -34,14 +35,10 @@ class MyOrdersTab extends StatelessWidget {
   }
 
   _tabBar() {
-    return Container(
-      color: Colors.white,
-      padding: EdgeInsets.fromLTRB(16, 0, 16, 16),
-      child: Container(
-        decoration: BoxDecoration(
-          color: ProjectColors.inputFill,
-          borderRadius: BorderRadius.all(ProjectRadius.main),
-        ),
+    return CustomContainer(
+      child: CustomContainer(
+        padding: EdgeInsets.zero,
+        color: ProjectColors.inputFill,
         child: TabBar(
           indicatorPadding: EdgeInsets.all(4),
           tabs: [

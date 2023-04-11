@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_locales/flutter_locales.dart';
 
 class ProjectColors {
   static const primary = Color(0xFFFFCC00);

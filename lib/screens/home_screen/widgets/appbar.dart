@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants.dart';
+import '../../widgets/my_container.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key});
@@ -8,10 +9,8 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double topPadding = MediaQuery.of(context).padding.top;
-    return Container(
-      color: Colors.white,
+    return CustomContainer(
       height: 180 + topPadding,
-      padding: EdgeInsets.all(ProjectGap.main),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -41,14 +40,10 @@ class CustomAppBar extends StatelessWidget {
   }
 
   _mealSection() {
-    return Container(
+    return CustomContainer(
       margin: EdgeInsets.only(right: ProjectGap.main),
-      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-      decoration: BoxDecoration(
-        color: ProjectColors.inputFill,
-        borderRadius: BorderRadius.all(ProjectRadius.button),
-      ),
-      height: double.infinity,
+      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+      color: ProjectColors.inputFill,
       child: Text('Meal', style: ProjectTextStyle.input),
     );
   }
