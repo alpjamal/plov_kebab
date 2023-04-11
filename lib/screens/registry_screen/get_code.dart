@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
-import 'package:otp_text_field/otp_field.dart';
-import 'package:otp_text_field/style.dart';
-
+import 'package:pinput/pinput.dart';
 import '../../utils/constants.dart';
 
 class GetOtpCodeScreen extends StatelessWidget {
@@ -20,19 +18,18 @@ class GetOtpCodeScreen extends StatelessWidget {
           children: [
             LocaleText(ProjectLocales.registration, style: ProjectTextStyle.registry),
             SizedBox(height: 16),
-            OTPTextField(
-              controller: OtpFieldController(),
-              keyboardType: TextInputType.none,
-              length: 6,
-              width: MediaQuery.of(context).size.width,
-              textFieldAlignment: MainAxisAlignment.spaceBetween,
-              fieldStyle: FieldStyle.box,
-              fieldWidth: (MediaQuery.of(context).size.width - ProjectGap.main * 2) / 6 - ProjectGap.main,
-              outlineBorderRadius: 12,
+            Center(
+              child: Pinput(
+                keyboardType: TextInputType.number,
+                length: 6,
+                defaultPinTheme: _pinTheme(context, false),
+                closeKeyboardWhenCompleted: true,
+                focusedPinTheme: _pinTheme(context, true),
+                cursor: _cursor(),
+              ),
             ),
             Spacer(),
-            SizedBox(
-              width: double.infinity,
+            Center(
               child: Text(
                 'timer',
                 textAlign: TextAlign.center,
@@ -41,15 +38,33 @@ class GetOtpCodeScreen extends StatelessWidget {
             ),
             SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {
-                
-              },
+              onPressed: () {},
               child: LocaleText(ProjectLocales.conTinue, style: ProjectTextStyle.input),
             ),
             SizedBox(height: 10),
           ],
         ),
       ),
+    );
+  }
+
+  _cursor() {
+    return SizedBox(
+      height: 30,
+      child: VerticalDivider(thickness: 2, color: ProjectColors.primary),
+    );
+  }
+
+  _pinTheme(BuildContext context, bool isFocused) {
+    return PinTheme(
+      textStyle: ProjectTextStyle.input,
+      decoration: BoxDecoration(
+        color: ProjectColors.inputFill,
+        borderRadius: BorderRadius.all(ProjectRadius.main),
+        border: isFocused ? Border.all(color: ProjectColors.primary) : null,
+      ),
+      width: (MediaQuery.of(context).size.width - 2 * ProjectGap.main) / 6,
+      height: 60,
     );
   }
 }

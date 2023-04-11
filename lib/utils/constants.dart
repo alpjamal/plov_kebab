@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_locales/flutter_locales.dart';
 
 class ProjectColors {
   static const primary = Color(0xFFFFCC00);
@@ -10,8 +11,9 @@ class ProjectColors {
 
 class ProjectTextStyle {
   static const registry = TextStyle(fontSize: 28, fontWeight: FontWeight.bold);
-  static const input = TextStyle(fontSize: 15, fontWeight: FontWeight.bold);
-  static const navBar = TextStyle(fontSize: 10, fontWeight: FontWeight.w600);
+  static const input = TextStyle(fontSize: 15);
+  static const navBar = TextStyle(fontSize: 10, fontWeight: FontWeight.w600, color: Colors.grey);
+  static const appBar = TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold);
 }
 
 class ProjectRadius {
@@ -24,6 +26,7 @@ class ProjectIcon {
   static const en = 'assets/icons/en.png';
   static const ru = 'assets/icons/ru.png';
   static const uz = 'assets/icons/uz.png';
+  static const emptyCart = 'assets/icons/empty_cart.png';
 }
 
 class ProjectUrl {
@@ -36,6 +39,12 @@ class ProjectLocales {
   static const String selectLan = 'select_lang';
   static const String wrongNum = 'wrong_number';
   static const String number = 'phone_number';
+  static const String home = 'home';
+  static const String cart = 'cart';
+  static const String myOrders = 'my_orders';
+  static const String profile = 'profile';
+  static const String currentOrders = 'current_orders';
+  static const String orderHistory = 'order_history';
 }
 
 class ProjectGap {

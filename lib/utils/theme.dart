@@ -4,6 +4,7 @@ import './constants.dart';
 
 class ProjectTheme {
   static final light = ThemeData(
+    scaffoldBackgroundColor: Color(0xffF5F5F5),
     primaryColor: ProjectColors.primary,
     textButtonTheme: const TextButtonThemeData(
       style: ButtonStyle(
@@ -11,10 +12,21 @@ class ProjectTheme {
       ),
     ),
     appBarTheme: AppBarTheme(
-      systemOverlayStyle: SystemUiOverlayStyle(statusBarBrightness: Brightness.light),
-      backgroundColor: Colors.transparent,
+      systemOverlayStyle: SystemUiOverlayStyle(
+        statusBarBrightness: Brightness.light,
+      ),
+      backgroundColor: Colors.white,
       elevation: 0,
       foregroundColor: Colors.black,
+      titleTextStyle: ProjectTextStyle.appBar,
+    ),
+    tabBarTheme: TabBarTheme(
+      labelColor: Colors.black,
+      unselectedLabelColor: Colors.grey,
+      indicator: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.all(ProjectRadius.main),
+      ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
@@ -42,6 +54,15 @@ class ProjectTheme {
     ),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: Colors.white,
+    ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      type: BottomNavigationBarType.fixed,
+      backgroundColor: Colors.white,
+      elevation: 0,
+      selectedItemColor: ProjectColors.primary,
+      selectedLabelStyle: ProjectTextStyle.navBar,
+      unselectedItemColor: Colors.grey,
+      unselectedLabelStyle: ProjectTextStyle.navBar,
     ),
   );
 }
