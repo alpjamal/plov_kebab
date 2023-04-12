@@ -19,9 +19,7 @@ class CustomAppBar extends StatelessWidget {
           SizedBox(height: ProjectGap.main),
           SizedBox(
             height: 50,
-            child: TextField(
-              cursorColor: ProjectColors.primary,
-            ),
+            child: TextField(),
           ),
           SizedBox(height: ProjectGap.main),
           LimitedBox(

@@ -3,10 +3,10 @@ import 'package:flutter_locales/flutter_locales.dart';
 
 import '../../../utils/constants.dart';
 
-class CustomInputField extends StatelessWidget {
-  const CustomInputField({super.key, required this.title, required this.hintText});
+class CustomInputSection extends StatelessWidget {
+  const CustomInputSection({super.key, required this.title, required this.textField});
   final String title;
-  final String hintText;
+  final TextField textField;
 
   @override
   Widget build(BuildContext context) {
@@ -15,10 +15,7 @@ class CustomInputField extends StatelessWidget {
       children: [
         LocaleText(title, style: ProjectTextStyle.input),
         SizedBox(height: 5),
-        TextField(
-          decoration: InputDecoration(hintText: hintText),
-          cursorColor: ProjectColors.primary,
-        ),
+        textField,
         SizedBox(height: 15),
       ],
     );

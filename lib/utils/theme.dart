@@ -52,6 +52,10 @@ class ProjectTheme {
         borderRadius: BorderRadius.all(ProjectRadius.main),
       ),
     ),
+    textSelectionTheme: TextSelectionThemeData(
+      cursorColor: ProjectColors.primary,
+      selectionColor: ProjectColors.primary,
+    ),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: Colors.white,
     ),
