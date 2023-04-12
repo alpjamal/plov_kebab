@@ -30,7 +30,7 @@ class BottomNavBar extends StatelessWidget {
               label: context.localeString(ProjectLocales.myOrders),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.account_circle_outlined),
+              icon: Icon(Icons.person_outline),
               label: context.localeString(ProjectLocales.profile),
             ),
           ],

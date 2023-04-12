@@ -44,6 +44,7 @@ class ProjectLocales {
   static const String profile = 'profile';
   static const String currentOrders = 'current_orders';
   static const String orderHistory = 'order_history';
+  static const String settings = 'settings';
 }
 
 class ProjectGap {
