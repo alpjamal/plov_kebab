@@ -55,6 +55,7 @@ class ProjectLocales {
   static const String phoneNum = 'phone_number';
   static const String birthDate = 'birth_date';
   static const String enterBirthDate = 'enter_birth';
+  static const String yourBirthDate = 'your_birth';
 }
 
 class ProjectGap {

@@ -39,7 +39,6 @@ class MyApp extends StatelessWidget {
         locale: locale,
         theme: ProjectTheme.light,
         debugShowCheckedModeBanner: false,
-        // initialRoute: ProjectRoute.splashScreen,
         initialRoute: ProjectRoute.editProfile,
         routes: {
           ProjectRoute.splashScreen: (context) => SplashScreen(),
