@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:plov_kebab/utils/constants.dart';
 
-import 'widgets/my_container.dart';
+import 'global_widgets/container.dart';
+import 'global_widgets/danger_button.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
-  static const routeName = '/settings-screen';
 
   @override
   Widget build(BuildContext context) {
@@ -41,20 +41,8 @@ class SettingsScreen extends StatelessWidget {
             ),
           ),
           Spacer(),
-          _logoutBtn(context),
+          DangerButton(onPressed: () {}, title: 'Log out'),
         ],
-      ),
-    );
-  }
-
-  _logoutBtn(ctx) {
-    return Container(
-      margin: EdgeInsets.only(bottom: MediaQuery.of(ctx).padding.bottom),
-      padding: EdgeInsets.all(ProjectGap.main),
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(backgroundColor: Colors.white, foregroundColor: Colors.red),
-        child: Text('Log Out', style: ProjectTextStyle.input.copyWith(fontWeight: FontWeight.bold)),
-        onPressed: () {},
       ),
     );
   }

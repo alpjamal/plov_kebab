@@ -13,6 +13,8 @@ class ProjectTextStyle {
   static const input = TextStyle(fontSize: 15);
   static const navBar = TextStyle(fontSize: 10, fontWeight: FontWeight.w600, color: Colors.grey);
   static const appBar = TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold);
+  static const descriptionBold = TextStyle(fontSize: 13, color: Colors.black, fontWeight: FontWeight.bold);
+  static const description = TextStyle(fontSize: 13, color: Colors.black);
 }
 
 class ProjectRadius {
@@ -45,8 +47,26 @@ class ProjectLocales {
   static const String currentOrders = 'current_orders';
   static const String orderHistory = 'order_history';
   static const String settings = 'settings';
+  static const String editProfile = 'edit_profile';
+  static const String accountManagement = 'account_management';
+  static const String confirm = 'confirm';
+  static const String addProduct = 'add_product';
+  static const String name = 'name';
+  static const String phoneNum = 'phone_number';
+  static const String birthDate = 'birth_date';
+  static const String enterBirthDate = 'enter_birth';
 }
 
 class ProjectGap {
   static const double main = 16;
+}
+
+class ProjectRoute {
+  static const splashScreen = '/splash-screen';
+  static const registyEnterNumber = '/registry-enter-number';
+  static const registryGetCode = '/get-otp-code-screen';
+  static const homeScreen = '/home-screen';
+  static const settings = '/settings-screen';
+  static const editProfile = '/profile-screen';
+  static const manageAccount = '/manage-account';
 }

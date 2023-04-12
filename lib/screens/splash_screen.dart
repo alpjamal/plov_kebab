@@ -5,7 +5,6 @@ import 'package:plov_kebab/utils/constants.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
-  static const routeName = '/splash-screen';
 
   @override
   Widget build(BuildContext context) {

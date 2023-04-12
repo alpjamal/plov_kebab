@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:plov_kebab/screens/registry_screen/enter_number.dart';
+import 'package:plov_kebab/screens/global_widgets/language_card.dart';
 import 'package:plov_kebab/utils/constants.dart';
 
 class LanguageScreen extends StatelessWidget {
@@ -9,6 +10,7 @@ class LanguageScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Padding(
         padding: EdgeInsets.all(ProjectGap.main),
         child: Column(
@@ -19,36 +21,16 @@ class LanguageScreen extends StatelessWidget {
             SizedBox(height: 50),
             LocaleText('select_lang', style: ProjectTextStyle.input),
             SizedBox(height: ProjectGap.main),
-            _lanField('O\'zbekcha', ProjectIcon.uz, context),
-            _lanField('Русский', ProjectIcon.ru, context),
-            _lanField('English', ProjectIcon.en, context),
+            LanguageCard(title: 'O\'zbekcha', assetName: ProjectIcon.uz, onTap: () => _onTap(context)),
+            LanguageCard(title: 'Русский', assetName: ProjectIcon.ru, onTap: () => _onTap(context)),
+            LanguageCard(title: 'English', assetName: ProjectIcon.en, onTap: () => _onTap(context)),
           ],
         ),
       ),
     );
   }
 
-
-  _lanField(String lan, String assetName, ctx) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => RegistrationScreen()));
-      },
-      child: Container(
-        padding: EdgeInsets.all(ProjectGap.main),
-        margin: EdgeInsets.only(bottom: ProjectGap.main),
-        decoration: BoxDecoration(
-          color: ProjectColors.inputFill,
-          borderRadius: BorderRadius.all(ProjectRadius.button),
-        ),
-        child: Row(
-          children: [
-            Image.asset(assetName, cacheWidth: 32),
-            SizedBox(width: 12),
-            Text(lan, style: ProjectTextStyle.input),
-          ],
-        ),
-      ),
-    );
+  _onTap(ctx) {
+    Navigator.of(ctx).push(MaterialPageRoute(builder: (context) => RegistrationScreen()));
   }
 }

@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:plov_kebab/data/bloc/nav_bar/nav_bar_cubit.dart';
+import 'package:plov_kebab/screens/account_screen.dart';
 import 'package:plov_kebab/screens/home_screen/home_screen.dart';
+import 'package:plov_kebab/screens/profile_screen/profile_screen.dart';
 import 'package:plov_kebab/screens/settings_screen.dart';
+import 'package:plov_kebab/utils/constants.dart';
 import './screens/registry_screen/get_code.dart';
 import 'package:plov_kebab/utils/theme.dart';
 import 'screens/registry_screen/enter_number.dart';
@@ -36,14 +39,16 @@ class MyApp extends StatelessWidget {
         locale: locale,
         theme: ProjectTheme.light,
         debugShowCheckedModeBanner: false,
-        // initialRoute: SplashScreen.routeName,
-        initialRoute: HomeScreen.routeName,
+        // initialRoute: ProjectRoute.splashScreen,
+        initialRoute: ProjectRoute.editProfile,
         routes: {
-          SplashScreen.routeName: (ctx) => SplashScreen(),
-          RegistrationScreen.routenName: (ctx) => RegistrationScreen(),
-          GetOtpCodeScreen.routeName: (ctx) => GetOtpCodeScreen(),
-          HomeScreen.routeName: (ctx) => HomeScreen(),
-          SettingsScreen.routeName: (ctx) => SettingsScreen(),
+          ProjectRoute.splashScreen: (context) => SplashScreen(),
+          ProjectRoute.registyEnterNumber: (context) => RegistrationScreen(),
+          ProjectRoute.registryGetCode: (context) => GetOtpCodeScreen(),
+          ProjectRoute.homeScreen: (context) => HomeScreen(),
+          ProjectRoute.settings: (context) => SettingsScreen(),
+          ProjectRoute.editProfile: (context) => EditProfileScreen(),
+          ProjectRoute.manageAccount: (context) => ManageAccountScreen(),
         },
       );
     });

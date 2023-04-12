@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../../utils/constants.dart';
-import '../../../widgets/my_container.dart';
+import '../../../global_widgets/container.dart';
 import '../appbar.dart';
 
 class HomeTab extends StatelessWidget {

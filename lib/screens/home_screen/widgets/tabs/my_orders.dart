@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 
 import '../../../../utils/constants.dart';
-import '../../../widgets/my_container.dart';
+import '../../../global_widgets/container.dart';
 
 class MyOrdersTab extends StatelessWidget {
   const MyOrdersTab({super.key});
@@ -15,35 +15,27 @@ class MyOrdersTab extends StatelessWidget {
         appBar: AppBar(title: LocaleText(ProjectLocales.myOrders)),
         body: Column(
           children: [
-            _tabBar(),
-            _body(),
-          ],
-        ),
-      ),
-    );
-  }
-
-  _body() {
-    return Expanded(
-      child: TabBarView(
-        children: [
-          Center(child: Text('Current orders')),
-          Center(child: Text('Orders history')),
-        ],
-      ),
-    );
-  }
-
-  _tabBar() {
-    return CustomContainer(
-      child: CustomContainer(
-        padding: EdgeInsets.zero,
-        color: ProjectColors.inputFill,
-        child: TabBar(
-          indicatorPadding: EdgeInsets.all(4),
-          tabs: [
-            Tab(child: LocaleText(ProjectLocales.currentOrders)),
-            Tab(child: LocaleText(ProjectLocales.orderHistory)),
+            CustomContainer(
+              child: CustomContainer(
+                padding: EdgeInsets.zero,
+                color: ProjectColors.inputFill,
+                child: TabBar(
+                  indicatorPadding: EdgeInsets.all(4),
+                  tabs: [
+                    Tab(child: LocaleText(ProjectLocales.currentOrders)),
+                    Tab(child: LocaleText(ProjectLocales.orderHistory)),
+                  ],
+                ),
+              ),
+            ),
+            Expanded(
+              child: TabBarView(
+                children: [
+                  Center(child: Text('Current orders')),
+                  Center(child: Text('Orders history')),
+                ],
+              ),
+            ),
           ],
         ),
       ),

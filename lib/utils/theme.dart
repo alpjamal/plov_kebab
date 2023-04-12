@@ -45,11 +45,11 @@ class ProjectTheme {
       fillColor: ProjectColors.inputFill,
       enabledBorder: OutlineInputBorder(
         borderSide: BorderSide(color: Colors.transparent),
-        borderRadius: BorderRadius.all(ProjectRadius.button),
+        borderRadius: BorderRadius.all(ProjectRadius.main),
       ),
       focusedBorder: OutlineInputBorder(
         borderSide: BorderSide(color: ProjectColors.primary),
-        borderRadius: BorderRadius.all(ProjectRadius.button),
+        borderRadius: BorderRadius.all(ProjectRadius.main),
       ),
     ),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(

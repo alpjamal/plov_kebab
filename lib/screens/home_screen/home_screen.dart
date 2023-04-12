@@ -9,7 +9,6 @@ import 'package:plov_kebab/screens/home_screen/widgets/tabs/profile_tab.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-  static const routeName = '/home-screen';
 
   @override
   Widget build(BuildContext context) {

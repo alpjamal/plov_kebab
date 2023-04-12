@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:plov_kebab/data/bloc/nav_bar/nav_bar_cubit.dart';
+import 'package:plov_kebab/screens/global_widgets/button.dart';
 import 'package:plov_kebab/utils/constants.dart';
 
 class CartTab extends StatelessWidget {
@@ -18,14 +19,9 @@ class CartTab extends StatelessWidget {
           SizedBox(height: 50),
           LocaleText('cart_is_empty'),
           Spacer(),
-          Padding(
-            padding: EdgeInsets.all(ProjectGap.main),
-            child: ElevatedButton(
-              onPressed: () {
-                context.read<NavBarCubit>().changeTab(0);
-              },
-              child: Text('Add product'),
-            ),
+          CustomButton(
+            onPressed: () => context.read<NavBarCubit>().changeTab(0),
+            title: ProjectLocales.addProduct,
           ),
         ],
       ),

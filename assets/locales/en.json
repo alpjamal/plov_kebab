@@ -30,5 +30,11 @@
     "current_orders": "Current orders",
     "order_history": "History of orders",
     "settings": "Settings",
+    "edit_profile": "Edit profile",
+    "account_management": "Account management",
+    "confirm": "Confirm",
+    "name": "Confirm",
+    "birth_date": "Date of birth",
+    "enter_birth": "Enter your date of birth",
     "": ""
 }

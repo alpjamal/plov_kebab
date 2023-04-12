@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
-import 'package:plov_kebab/screens/settings_screen.dart';
-import 'package:plov_kebab/screens/widgets/my_container.dart';
+import 'package:plov_kebab/screens/global_widgets/container.dart';
 
 import '../../../../utils/constants.dart';
 
@@ -21,6 +20,7 @@ class ProfileTab extends StatelessWidget {
               title: Text('Name', style: ProjectTextStyle.appBar),
               subtitle: Text('+998 90 000 00 00', style: ProjectTextStyle.input.copyWith(height: 2)),
               trailing: Icon(Icons.edit, color: Colors.grey),
+              onTap: () => Navigator.of(context).pushNamed(ProjectRoute.editProfile),
             ),
           ),
           SizedBox(height: ProjectGap.main),
@@ -31,7 +31,7 @@ class ProfileTab extends StatelessWidget {
                 Divider(),
                 _listTile(context, Icons.pin_drop, 'Branches', ''),
                 Divider(),
-                _listTile(context, Icons.settings, 'Settings', SettingsScreen.routeName),
+                _listTile(context, Icons.settings, 'Settings', ProjectRoute.settings),
                 Divider(),
                 _listTile(context, Icons.info_outline, 'About the service', ''),
               ],

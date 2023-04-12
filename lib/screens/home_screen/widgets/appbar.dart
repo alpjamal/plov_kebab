@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants.dart';
-import '../../widgets/my_container.dart';
+import '../../global_widgets/container.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key});
