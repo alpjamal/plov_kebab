@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_locales/flutter_locales.dart';
+import 'package:plov_kebab/data/bloc/menu/menu_bloc.dart';
 import 'package:plov_kebab/data/bloc/nav_bar/nav_bar_cubit.dart';
 import 'package:plov_kebab/screens/account_screen.dart';
 import 'package:plov_kebab/screens/home_screen/home_screen.dart';
@@ -15,12 +16,13 @@ import 'screens/splash_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Locales.init(['en', 'ru']);
+  await Locales.init(['en', 'ru', 'uz']);
 
   runApp(
     MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => NavBarCubit()),
+        BlocProvider(create: (_) => MenuBloc()..add(LoadMenu())),
       ],
       child: MyApp(),
     ),
@@ -39,7 +41,7 @@ class MyApp extends StatelessWidget {
         locale: locale,
         theme: ProjectTheme.light,
         debugShowCheckedModeBanner: false,
-        initialRoute: ProjectRoute.editProfile,
+        initialRoute: ProjectRoute.homeScreen,
         routes: {
           ProjectRoute.splashScreen: (context) => SplashScreen(),
           ProjectRoute.registyEnterNumber: (context) => RegistrationScreen(),

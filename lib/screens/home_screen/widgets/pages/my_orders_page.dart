@@ -4,8 +4,8 @@ import 'package:flutter_locales/flutter_locales.dart';
 import '../../../../utils/constants.dart';
 import '../../../global_widgets/container.dart';
 
-class MyOrdersTab extends StatelessWidget {
-  const MyOrdersTab({super.key});
+class MyOrdersPage extends StatelessWidget {
+  const MyOrdersPage({super.key});
 
   @override
   Widget build(BuildContext context) {

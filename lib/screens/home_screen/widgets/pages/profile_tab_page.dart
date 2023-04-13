@@ -4,8 +4,8 @@ import 'package:plov_kebab/screens/global_widgets/container.dart';
 
 import '../../../../utils/constants.dart';
 
-class ProfileTab extends StatelessWidget {
-  const ProfileTab({super.key});
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -6,6 +6,10 @@ class ProjectTheme {
   static final light = ThemeData(
     scaffoldBackgroundColor: Color(0xffF5F5F5),
     primaryColor: ProjectColors.primary,
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: ProjectColors.primary,
+      primary: ProjectColors.primary,
+    ),
     textButtonTheme: const TextButtonThemeData(
       style: ButtonStyle(
         iconColor: MaterialStatePropertyAll<Color>(ProjectColors.primary),

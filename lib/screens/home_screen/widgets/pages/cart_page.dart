@@ -5,8 +5,8 @@ import 'package:plov_kebab/data/bloc/nav_bar/nav_bar_cubit.dart';
 import 'package:plov_kebab/screens/global_widgets/button.dart';
 import 'package:plov_kebab/utils/constants.dart';
 
-class CartTab extends StatelessWidget {
-  const CartTab({super.key});
+class CartPage extends StatelessWidget {
+  const CartPage({super.key});
 
   @override
   Widget build(BuildContext context) {

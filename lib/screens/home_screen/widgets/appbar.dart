@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-
+import './category_section.dart';
+import '../../../data/models/menu.dart';
 import '../../../utils/constants.dart';
 import '../../global_widgets/container.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key});
+  const CustomAppBar(this.menu, {super.key});
+  final Menu menu;
 
   @override
   Widget build(BuildContext context) {
@@ -22,27 +24,9 @@ class CustomAppBar extends StatelessWidget {
             child: TextField(),
           ),
           SizedBox(height: ProjectGap.main),
-          LimitedBox(
-            maxHeight: 40,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: 10,
-              itemBuilder: (context, index) {
-                return _mealSection();
-              },
-            ),
-          ),
+          CategorySection(menu),
         ],
       ),
-    );
-  }
-
-  _mealSection() {
-    return CustomContainer(
-      margin: EdgeInsets.only(right: ProjectGap.main),
-      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-      color: ProjectColors.inputFill,
-      child: Text('Meal', style: ProjectTextStyle.input),
     );
   }
 }
