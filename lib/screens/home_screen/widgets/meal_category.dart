@@ -1,42 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:plov_kebab/data/models/menu.dart';
+import 'package:plov_kebab/data/models/category_model.dart';
 
 import '../../../utils/constants.dart';
 import '../../global_widgets/container.dart';
+import 'meal.dart';
 
 class MealCategory extends StatelessWidget {
-  const MealCategory({super.key, required this.menu, required this.title});
-  final Menu menu;
+  const MealCategory({super.key, required this.category, required this.title});
+  final CategoryModel category;
   final String title;
 
   @override
   Widget build(BuildContext context) {
-
     return CustomContainer(
       margin: EdgeInsets.only(bottom: ProjectGap.main),
       padding: EdgeInsets.symmetric(horizontal: ProjectGap.main),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             title,
             style: ProjectTextStyle.appBar.copyWith(height: 2),
-            textAlign: TextAlign.left,
           ),
-          SizedBox(width: double.infinity),
-          _meal(),
-          Divider(height: 2),
-          _meal(),
+          ...List.generate(category.products!.length, (index) {
+            return Product(product: category.products![index]);
+          }),
         ],
       ),
-    );
-  }
-
-  _meal() {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: ProjectGap.main),
-      color: Colors.black12,
-      height: 50,
-      width: double.infinity,
     );
   }
 }

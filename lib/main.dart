@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_locales/flutter_locales.dart';
-import 'package:plov_kebab/data/bloc/menu/menu_bloc.dart';
 import 'package:plov_kebab/data/bloc/nav_bar/nav_bar_cubit.dart';
 import 'package:plov_kebab/screens/account_screen.dart';
 import 'package:plov_kebab/screens/home_screen/home_screen.dart';
@@ -10,6 +9,7 @@ import 'package:plov_kebab/screens/settings_screen.dart';
 import 'package:plov_kebab/utils/constants.dart';
 import './screens/registry_screen/get_code.dart';
 import 'package:plov_kebab/utils/theme.dart';
+import 'data/bloc/initial_data/initial_data_bloc.dart';
 import 'screens/registry_screen/enter_number.dart';
 import 'screens/splash_screen.dart';
 
@@ -22,7 +22,7 @@ void main() async {
     MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => NavBarCubit()),
-        BlocProvider(create: (_) => MenuBloc()..add(LoadMenu())),
+        BlocProvider(create: (_) => InitialDataBloc()..add(LoadInitialData())),
       ],
       child: MyApp(),
     ),

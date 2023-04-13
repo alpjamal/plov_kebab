@@ -15,6 +15,9 @@ class ProjectTextStyle {
   static const appBar = TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold);
   static const descriptionBold = TextStyle(fontSize: 13, color: Colors.black, fontWeight: FontWeight.bold);
   static const description = TextStyle(fontSize: 13, color: Colors.black);
+  static const productTitle = TextStyle(fontSize: 15);
+  static const productDescription = TextStyle(fontSize: 13, color: Colors.grey);
+  static const productPrice = TextStyle(fontSize: 15, fontWeight: FontWeight.bold);
 }
 
 class ProjectRadius {
@@ -28,10 +31,16 @@ class ProjectIcon {
   static const ru = 'assets/icons/ru.png';
   static const uz = 'assets/icons/uz.png';
   static const emptyCart = 'assets/icons/empty_cart.png';
+  static const placeholder = 'assets/icons/food_placeholder.png';
 }
 
-class ProjectUrl {
+class ProjectApi {
   static const baseUrl = 'https://test.customer.api.delever.uz/';
+  static const shipperId = 'd4b1658f-3271-4973-8591-98a82939a664';
+  static const bannerPath = '/v1/banner';
+  static const categoryWithProducts = '/v2/category-with-products';
+  static const imageUrl = 'https://test.cdn.delever.uz/delever/';
+  
 }
 
 class ProjectLocales {

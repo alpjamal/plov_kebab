@@ -2,7 +2,13 @@ import 'package:dio/dio.dart';
 import 'package:plov_kebab/utils/constants.dart';
 
 class ApiRequest {
-  final Dio dio = Dio(BaseOptions(baseUrl: ProjectUrl.baseUrl));
+  final Dio dio = Dio(
+    BaseOptions(
+      baseUrl: ProjectApi.baseUrl,
+      connectTimeout: Duration(seconds: 5),
+      sendTimeout: Duration(seconds: 5),
+    ),
+  );
 
   Future<dynamic> doPostRequest({
     required String path,
@@ -10,7 +16,12 @@ class ApiRequest {
     Map<String, dynamic>? body,
     Map<String, dynamic>? query,
   }) async {
-    final response = await dio.post(path, data: body, queryParameters: query, options: Options(headers: headers));
+    final response = await dio.post(
+      path,
+      data: body,
+      queryParameters: query,
+      options: Options(headers: headers),
+    );
     return response;
   }
 

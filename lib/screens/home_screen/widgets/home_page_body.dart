@@ -1,26 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:plov_kebab/data/models/banners_model.dart';
 
-import '../../../data/models/menu.dart';
+import '../../../data/models/initial_data_model.dart';
 import '../../../utils/constants.dart';
 import 'banner.dart';
 import 'meal_category.dart';
 
 class HomePageBody extends StatelessWidget {
-  const HomePageBody(this.menu, {super.key});
-  final Menu menu;
+  const HomePageBody({super.key, required this.initialData, required this.banner});
+  final InitialData initialData;
+  final BannersModel? banner;
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: SingleChildScrollView(
         child: Column(
           children: [
-            MealBanner(),
-            SizedBox(height: ProjectGap.main),
+            if (banner?.count != 0 && banner != null) ...[
+              MealBanner(),
+              SizedBox(height: ProjectGap.main),
+            ],
             ...List.generate(
-              int.parse(menu.count.toString()),
+              initialData.categories.length,
               (index) {
-                String title = menu.categories![index].title!.en.toString();
-                return MealCategory(menu: menu, title: title);
+                String title = initialData.categories[index].title!.en.toString();
+                return MealCategory(category: initialData.categories[index], title: title);
               },
             ),
           ],

@@ -1,6 +1,6 @@
-import 'description.dart';
+import 'description_model.dart';
 
-class Product {
+class ProductModel {
   String? id;
   int? outPrice;
   String? currency;
@@ -22,7 +22,7 @@ class Product {
   String? iikoId;
   String? jowiId;
 
-  Product(
+  ProductModel(
       {this.id,
       this.outPrice,
       this.currency,
@@ -44,7 +44,7 @@ class Product {
       this.iikoId,
       this.jowiId});
 
-  Product.fromJson(Map<String, dynamic> json) {
+  ProductModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     outPrice = json['out_price'];
     currency = json['currency'];
