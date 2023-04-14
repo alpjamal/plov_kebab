@@ -65,6 +65,7 @@ class ProjectLocales {
   static const String birthDate = 'birth_date';
   static const String enterBirthDate = 'enter_birth';
   static const String yourBirthDate = 'your_birth';
+  static const String add = 'add';
 }
 
 class ProjectGap {
@@ -73,10 +74,11 @@ class ProjectGap {
 
 class ProjectRoute {
   static const splashScreen = '/splash-screen';
-  static const registyEnterNumber = '/registry-enter-number';
+  static const registyEnterNumber = '/registry-enter-number-screen';
   static const registryGetCode = '/get-otp-code-screen';
   static const homeScreen = '/home-screen';
   static const settings = '/settings-screen';
   static const editProfile = '/profile-screen';
-  static const manageAccount = '/manage-account';
+  static const manageAccount = '/manage-account-screen';
+  static const productScreen = '/product-screen';
 }

@@ -4,6 +4,7 @@ import 'package:flutter_locales/flutter_locales.dart';
 import 'package:plov_kebab/data/bloc/nav_bar/nav_bar_cubit.dart';
 import 'package:plov_kebab/screens/account_screen.dart';
 import 'package:plov_kebab/screens/home_screen/home_screen.dart';
+import 'package:plov_kebab/screens/product_screen/product_screen.dart';
 import 'package:plov_kebab/screens/profile_screen/profile_screen.dart';
 import 'package:plov_kebab/screens/settings_screen.dart';
 import 'package:plov_kebab/utils/constants.dart';
@@ -50,6 +51,7 @@ class MyApp extends StatelessWidget {
           ProjectRoute.settings: (context) => SettingsScreen(),
           ProjectRoute.editProfile: (context) => EditProfileScreen(),
           ProjectRoute.manageAccount: (context) => ManageAccountScreen(),
+          ProjectRoute.productScreen: (context) => ProductScreen(),
         },
       );
     });

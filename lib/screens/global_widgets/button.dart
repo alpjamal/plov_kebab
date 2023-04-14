@@ -4,15 +4,16 @@ import 'package:flutter_locales/flutter_locales.dart';
 import '../../utils/constants.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key, required this.onPressed, required this.title});
+  const CustomButton({super.key, required this.onPressed, required this.title, this.padding});
   final String title;
   final Function() onPressed;
+  final EdgeInsets? padding;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: MediaQuery.of(context).padding.bottom),
-      padding: EdgeInsets.all(ProjectGap.main),
+      padding: padding ?? EdgeInsets.all(ProjectGap.main),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           foregroundColor: ProjectColors.primary,

@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
         }
         if (state is DataLoaded) {
           return Column(
-            children: [
+            children: [     
               CustomAppBar(state.data),
               SizedBox(height: ProjectGap.main),
               HomePageBody(initialData: state.data, banner: state.banner),

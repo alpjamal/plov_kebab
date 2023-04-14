@@ -3,7 +3,7 @@ import 'package:plov_kebab/data/models/category_model.dart';
 
 import '../../../utils/constants.dart';
 import '../../global_widgets/container.dart';
-import 'meal.dart';
+import 'product.dart';
 
 class MealCategory extends StatelessWidget {
   const MealCategory({super.key, required this.category, required this.title});
