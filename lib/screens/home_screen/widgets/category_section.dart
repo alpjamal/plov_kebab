@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:plov_kebab/screens/global_widgets/category_button.dart';
 
 import '../../../data/models/initial_data_model.dart';
 import '../../../utils/constants.dart';
-import '../../global_widgets/container.dart';
 
 class CategorySection extends StatelessWidget {
-  const CategorySection(this.menu, {super.key});
-  final InitialData menu;
+  const CategorySection(this.data, {super.key});
+  final InitialData data;
 
   @override
   Widget build(BuildContext context) {
@@ -14,14 +14,12 @@ class CategorySection extends StatelessWidget {
       maxHeight: 40,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: int.parse(menu.count.toString()),
+        itemCount: data.categories.length,
         itemBuilder: (context, index) {
-          String title = menu.categories[index].title!.en.toString();
-          return CustomContainer(
+          final title = data.categories[index].title!.en.toString();
+          return Container(
             margin: EdgeInsets.only(right: ProjectGap.main),
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-            color: ProjectColors.inputFill,
-            child: Text(title, style: ProjectTextStyle.input),
+            child: CategoryButton(title: title),
           );
         },
       ),

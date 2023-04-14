@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_locales/flutter_locales.dart';
+import 'package:plov_kebab/data/bloc/filter_category/filter_cubit.dart';
 import 'package:plov_kebab/data/bloc/nav_bar/nav_bar_cubit.dart';
 import 'package:plov_kebab/screens/account_screen.dart';
 import 'package:plov_kebab/screens/home_screen/home_screen.dart';
@@ -23,7 +24,8 @@ void main() async {
     MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => NavBarCubit()),
-        BlocProvider(create: (_) => InitialDataBloc()..add(LoadInitialData())),
+        BlocProvider(create: (_) => DataBloc()..add(LoadInitialData())),
+        BlocProvider(create: (_) => FilterCubit()),
       ],
       child: MyApp(),
     ),

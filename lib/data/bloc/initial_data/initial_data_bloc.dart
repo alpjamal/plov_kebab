@@ -8,11 +8,11 @@ import 'package:plov_kebab/data/repository/category_repo.dart';
 part 'initial_data_event.dart';
 part 'initial_data_state.dart';
 
-class InitialDataBloc extends Bloc<InitialDataEvent, InitialDataState> {
+class DataBloc extends Bloc<DataEvent, DataState> {
   final _categoryRepo = CategoryRepo();
   final _bannerRepo = BannerRepo();
 
-  InitialDataBloc() : super(DataLoading()) {
+  DataBloc() : super(DataLoading()) {
     on<LoadInitialData>(_getInitialData);
   }
 

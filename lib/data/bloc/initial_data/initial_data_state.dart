@@ -1,13 +1,13 @@
 part of 'initial_data_bloc.dart';
 
-abstract class InitialDataState extends Equatable {}
+abstract class DataState extends Equatable {}
 
-class DataLoading extends InitialDataState {
+class DataLoading extends DataState {
   @override
   List<Object?> get props => [];
 }
 
-class DataLoaded extends InitialDataState {
+class DataLoaded extends DataState {
   final InitialData data;
   final BannersModel banner;
   DataLoaded({required this.data, required this.banner});
@@ -16,7 +16,7 @@ class DataLoaded extends InitialDataState {
   List<Object?> get props => [data, banner];
 }
 
-class DataLoadError extends InitialDataState {
+class DataLoadError extends DataState {
   @override
   List<Object?> get props => [];
 }

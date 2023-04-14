@@ -12,14 +12,14 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<InitialDataBloc, InitialDataState>(
+    return BlocBuilder<DataBloc, DataState>(
       builder: (context, state) {
         if (state is DataLoading) {
           return LoadingIndicator();
         }
         if (state is DataLoaded) {
           return Column(
-            children: [     
+            children: [
               CustomAppBar(state.data),
               SizedBox(height: ProjectGap.main),
               HomePageBody(initialData: state.data, banner: state.banner),

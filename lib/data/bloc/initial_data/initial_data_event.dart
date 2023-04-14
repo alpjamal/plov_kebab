@@ -1,8 +1,8 @@
 part of 'initial_data_bloc.dart';
 
-abstract class InitialDataEvent extends Equatable {}
+abstract class DataEvent extends Equatable {}
 
-class LoadInitialData extends InitialDataEvent {
+class LoadInitialData extends DataEvent {
   @override
   List<Object?> get props => [];
 }
