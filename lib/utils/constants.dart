@@ -37,9 +37,10 @@ class ProjectIcon {
 class ProjectApi {
   static const baseUrl = 'https://test.customer.api.delever.uz/';
   static const shipperId = 'd4b1658f-3271-4973-8591-98a82939a664';
-  static const bannerPath = '/v1/banner';
   static const categoryWithProducts = '/v2/category-with-products';
   static const imageUrl = 'https://test.cdn.delever.uz/delever/';
+  static const bannerPath = '/v1/banner';
+  static const favourites = '/v2/product-favourites';
   
 }
 

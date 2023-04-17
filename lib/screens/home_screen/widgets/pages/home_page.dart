@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:plov_kebab/data/bloc/initial_data/initial_data_bloc.dart';
+import 'package:plov_kebab/data/bloc/data/data_bloc.dart';
 import 'package:plov_kebab/screens/global_widgets/loading_indicator.dart';
 import 'package:plov_kebab/screens/home_screen/widgets/home_page_body.dart';
 
@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
         if (state is DataLoading) {
           return LoadingIndicator();
         }
-        if (state is DataLoaded) {
+        if (state is InitialDataLoaded) {
           return Column(
             children: [
               CustomAppBar(state.data),

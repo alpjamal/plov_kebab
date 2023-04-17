@@ -11,7 +11,7 @@ import 'package:plov_kebab/screens/settings_screen.dart';
 import 'package:plov_kebab/utils/constants.dart';
 import './screens/registry_screen/get_code.dart';
 import 'package:plov_kebab/utils/theme.dart';
-import 'data/bloc/initial_data/initial_data_bloc.dart';
+import 'data/bloc/data/data_bloc.dart';
 import 'screens/registry_screen/enter_number.dart';
 import 'screens/splash_screen.dart';
 
