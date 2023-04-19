@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_locales/flutter_locales.dart';
+import 'package:plov_kebab/data/bloc/auth/auth_bloc.dart';
 import 'package:plov_kebab/data/bloc/nav_bar/nav_bar_cubit.dart';
 import 'package:plov_kebab/utils/constants.dart';
 
@@ -9,13 +10,19 @@ class BottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = BlocProvider.of<NavBarCubit>(context, listen: true);
+    final controller = BlocProvider.of<NavBarCubit>(context, listen: false);
     return BlocBuilder<NavBarCubit, NavBarState>(
       builder: (context, state) {
         state = state as NavBarInitial;
         return BottomNavigationBar(
           currentIndex: state.index,
-          onTap: (value) => controller.changeTab(value),
+          onTap: (value) {
+            if (value == 3 && state is CustomerActiveState) {
+              Navigator.of(context).pushNamed(ProjectRoute.editProfile);
+            } else {
+              controller.changeTab(value);
+            }
+          },
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.home_outlined),

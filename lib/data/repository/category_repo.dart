@@ -6,9 +6,6 @@ class CategoryRepo {
   Future<InitialData> loadCategory() async {
     final response = await ApiRequest().doGetRequest(
       path: ProjectApi.categoryWithProducts,
-      headers: {
-        'shipper': ProjectApi.shipperId,
-      },
       query: {
         'page': 1,
         'limit': 100,

@@ -41,6 +41,11 @@ class ProjectApi {
   static const imageUrl = 'https://test.cdn.delever.uz/delever/';
   static const bannerPath = '/v1/banner';
   static const favourites = '/v2/product-favourites';
+  static const phone = '/v1/customers/phone';
+  static const register = '/v1/customers/register';
+  static const registerConfirm = '/v1/customers/register-confirm';
+  static const androidPlatformID = "6bd7c2e3-d35e-47df-93ce-ed54ed53f95f";
+  static const iosPlatformID = "f6631db7-09d0-4cd9-a03a-b7a590abb8c1";
   
 }
 
@@ -82,4 +87,5 @@ class ProjectRoute {
   static const editProfile = '/profile-screen';
   static const manageAccount = '/manage-account-screen';
   static const productScreen = '/product-screen';
+  static const registryEnterName = '/registry-enter-name';
 }

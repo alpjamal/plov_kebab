@@ -6,9 +6,6 @@ class FavouritesRepo {
   Future loadFavourites() async {
     final response = await ApiRequest().doGetRequest(
       path: ProjectApi.favourites,
-      headers: {
-        'shipper': ProjectApi.shipperId,
-      },
       query: {
         'page': 1,
         'limit': 100,

@@ -47,12 +47,20 @@ class ProjectTheme {
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: ProjectColors.inputFill,
+      border: OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.transparent),
+        borderRadius: BorderRadius.all(ProjectRadius.button),
+      ),
       enabledBorder: OutlineInputBorder(
         borderSide: BorderSide(color: Colors.transparent),
         borderRadius: BorderRadius.all(ProjectRadius.button),
       ),
       focusedBorder: OutlineInputBorder(
         borderSide: BorderSide(color: ProjectColors.primary),
+        borderRadius: BorderRadius.all(ProjectRadius.button),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.red),
         borderRadius: BorderRadius.all(ProjectRadius.button),
       ),
     ),

@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_locales/flutter_locales.dart';
+import 'package:plov_kebab/data/bloc/auth/auth_bloc.dart';
 import 'package:plov_kebab/data/bloc/filter_category/filter_cubit.dart';
 import 'package:plov_kebab/data/bloc/nav_bar/nav_bar_cubit.dart';
 import 'package:plov_kebab/screens/account_screen.dart';
 import 'package:plov_kebab/screens/home_screen/home_screen.dart';
 import 'package:plov_kebab/screens/product_screen/product_screen.dart';
 import 'package:plov_kebab/screens/profile_screen/profile_screen.dart';
+import 'package:plov_kebab/screens/registry_screen/erter_name.dart';
 import 'package:plov_kebab/screens/settings_screen.dart';
 import 'package:plov_kebab/utils/constants.dart';
-import './screens/registry_screen/get_code.dart';
+import 'screens/registry_screen/enter_code.dart';
 import 'package:plov_kebab/utils/theme.dart';
 import 'data/bloc/data/data_bloc.dart';
 import 'screens/registry_screen/enter_number.dart';
@@ -26,6 +28,7 @@ void main() async {
         BlocProvider(create: (_) => NavBarCubit()),
         BlocProvider(create: (_) => DataBloc()..add(LoadInitialData())),
         BlocProvider(create: (_) => FilterCubit()),
+        BlocProvider(create: (_) => AuthBloc()),
       ],
       child: MyApp(),
     ),
@@ -44,7 +47,7 @@ class MyApp extends StatelessWidget {
         locale: locale,
         theme: ProjectTheme.light,
         debugShowCheckedModeBanner: false,
-        initialRoute: ProjectRoute.homeScreen,
+        initialRoute: ProjectRoute.splashScreen,
         routes: {
           ProjectRoute.splashScreen: (context) => SplashScreen(),
           ProjectRoute.registyEnterNumber: (context) => RegistrationScreen(),
@@ -54,6 +57,7 @@ class MyApp extends StatelessWidget {
           ProjectRoute.editProfile: (context) => EditProfileScreen(),
           ProjectRoute.manageAccount: (context) => ManageAccountScreen(),
           ProjectRoute.productScreen: (context) => ProductScreen(),
+          ProjectRoute.registryEnterName: (context) => RegistryName(),
         },
       );
     });

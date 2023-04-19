@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_locales/flutter_locales.dart';
+import 'package:plov_kebab/data/bloc/auth/auth_bloc.dart';
 import 'package:plov_kebab/screens/global_widgets/container.dart';
 import 'package:plov_kebab/utils/constants.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
@@ -11,7 +13,9 @@ class RegistrationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var numberController = TextEditingController(text: '+998 ');
+    TextEditingController numberController = TextEditingController(text: '+998 ');
+    final formKey = GlobalKey<FormState>();
+
     final maskFormatter = MaskTextInputFormatter(
       initialText: '+998 ',
       mask: '+998 ## ### ## ##',
@@ -22,32 +26,53 @@ class RegistrationScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(),
-      body: Column(
-        children: [
-          CustomContainer(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                LocaleText(ProjectLocales.registration, style: ProjectTextStyle.registry),
-                SizedBox(height: 20),
-                LocaleText(ProjectLocales.number, style: ProjectTextStyle.input),
-                SizedBox(height: 8),
-                TextField(
-                  controller: numberController,
-                  keyboardType: TextInputType.number,
-                  inputFormatters: [maskFormatter],
-                ),
-              ],
+      body: BlocListener<AuthBloc, AuthState>(
+        listener: (context, state) {
+          if (state is GetCustomerSuccessState) {
+            Navigator.of(context).pushNamed(ProjectRoute.registryGetCode);
+          } else if (state is CustomerNotFoundState) {
+            Navigator.of(context).pushNamed(ProjectRoute.registryEnterName, arguments: state.phone);
+          }
+        },
+        child: Column(
+          children: [
+            CustomContainer(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  LocaleText(ProjectLocales.registration, style: ProjectTextStyle.registry),
+                  SizedBox(height: 20),
+                  LocaleText(ProjectLocales.number, style: ProjectTextStyle.input),
+                  SizedBox(height: 8),
+                  Form(
+                    key: formKey,
+                    child: TextFormField(
+                      controller: numberController,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [maskFormatter],
+                      validator: (value) {
+                        if (value!.length != 17) {
+                          return 'Enter valid number';
+                        }
+                        return null;
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-          Spacer(),
-          CustomButton(
-            onPressed: () {
-              Navigator.of(context).pushNamed(ProjectRoute.registryGetCode);
-            },
-            title: context.localeString(ProjectLocales.conTinue),
-          ),
-        ],
+            Spacer(),
+            CustomButton(
+              title: context.localeString(ProjectLocales.conTinue),
+              onPressed: () {
+                String finalNumber = '+998${maskFormatter.getUnmaskedText()}';
+                if (formKey.currentState!.validate()) {
+                  BlocProvider.of<AuthBloc>(context).add(GetCustomer(finalNumber));
+                }
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

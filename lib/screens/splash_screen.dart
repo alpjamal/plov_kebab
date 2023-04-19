@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:easy_splash_screen/easy_splash_screen.dart';
-import 'package:plov_kebab/screens/language_screen.dart';
+import 'package:plov_kebab/screens/home_screen/home_screen.dart';
 import 'package:plov_kebab/utils/constants.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -11,7 +11,7 @@ class SplashScreen extends StatelessWidget {
     return EasySplashScreen(
       logo: Image.asset(ProjectIcon.splash),
       durationInSeconds: 1,
-      navigator: LanguageScreen(),
+      navigator: HomeScreen(),
       logoWidth: 100,
       showLoader: false,
     );

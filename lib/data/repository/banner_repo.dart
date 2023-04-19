@@ -6,9 +6,6 @@ class BannerRepo {
   Future loadBanner() async {
     final response = await ApiRequest().doGetRequest(
       path: ProjectApi.bannerPath,
-      headers: {
-        'shipper': ProjectApi.shipperId,
-      },
       query: {
         'page': 1,
         'limit': 100,
