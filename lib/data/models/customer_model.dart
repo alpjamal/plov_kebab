@@ -25,16 +25,16 @@ class CustomerModel {
 
   factory CustomerModel.fromJson(Map<String, dynamic> json) {
     return CustomerModel(
-      createdAt: json['created_at'],
-      dateOfBirth: json['date_of_birth'],
-      fcmToken: json['fcm_token'],
+      createdAt: json['created_at'] ?? '',
+      dateOfBirth: json['date_of_birth'] ?? '',
+      fcmToken: json['fcm_token'] ?? json['access_token'] ?? '',
       id: json['id'],
       isBlocked: json['is_blocked'],
       minimalOrderPrice: json['minimal_order_price'],
       name: json['name'],
       phone: json['phone'],
-      registrationSource: json['registration_source'],
-      tgChatId: json['tg_chat_id'],
+      registrationSource: json['registration_source'] ?? '',
+      tgChatId: json['tg_chat_id'] ?? '',
     );
   }
 

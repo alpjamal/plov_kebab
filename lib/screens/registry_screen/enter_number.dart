@@ -27,8 +27,8 @@ class RegistrationScreen extends StatelessWidget {
       appBar: AppBar(),
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
-          if (state is GetCustomerSuccessState) {
-            Navigator.of(context).pushNamed(ProjectRoute.registryGetCode);
+          if (state is CustomerExistState) {
+            Navigator.of(context).pushNamed(ProjectRoute.registryEnterCode, arguments: {'phone': state.customer.phone});
           } else if (state is CustomerNotFoundState) {
             Navigator.of(context).pushNamed(ProjectRoute.registryEnterName, arguments: state.phone);
           }
@@ -67,7 +67,7 @@ class RegistrationScreen extends StatelessWidget {
               onPressed: () {
                 String finalNumber = '+998${maskFormatter.getUnmaskedText()}';
                 if (formKey.currentState!.validate()) {
-                  BlocProvider.of<AuthBloc>(context).add(GetCustomer(finalNumber));
+                  BlocProvider.of<AuthBloc>(context).add(CheckCustomer(finalNumber));
                 }
               },
             ),

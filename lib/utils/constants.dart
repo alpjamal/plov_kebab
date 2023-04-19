@@ -37,17 +37,20 @@ class ProjectIcon {
 
 class ProjectApi {
   static const baseUrl = 'https://test.customer.api.delever.uz/';
-  static const shipperId = 'd4b1658f-3271-4973-8591-98a82939a664';
-  static const categoryWithProducts = '/v2/category-with-products';
   static const imageUrl = 'https://test.cdn.delever.uz/delever/';
+  static const shipperId = 'd4b1658f-3271-4973-8591-98a82939a664';
+  static const androidPlatformID = "6bd7c2e3-d35e-47df-93ce-ed54ed53f95f";
+  static const iosPlatformID = "f6631db7-09d0-4cd9-a03a-b7a590abb8c1";
+  static const categoryWithProducts = '/v2/category-with-products';
   static const bannerPath = '/v1/banner';
   static const favourites = '/v2/product-favourites';
   static const phone = '/v1/customers/phone';
+  static const getCustomer = '/v1/customers/';
+  static const logIn = '/v1/customers/login';
   static const register = '/v1/customers/register';
-  static const registerConfirm = '/v1/customers/register-confirm';
-  static const androidPlatformID = "6bd7c2e3-d35e-47df-93ce-ed54ed53f95f";
-  static const iosPlatformID = "f6631db7-09d0-4cd9-a03a-b7a590abb8c1";
-  
+  static const confirmRegister = '/v1/customers/register-confirm';
+  static const confirmLogin = '/v1/customers/confirm-login';
+  static const customerAddress = '/v1/customer_address';
 }
 
 class ProjectLocales {
@@ -87,7 +90,7 @@ class ProjectGap {
 class ProjectRoute {
   static const splashScreen = '/splash-screen';
   static const registyEnterNumber = '/registry-enter-number-screen';
-  static const registryGetCode = '/get-otp-code-screen';
+  static const registryEnterCode = '/get-otp-code-screen';
   static const homeScreen = '/home-screen';
   static const settings = '/settings-screen';
   static const editProfileScreen = '/edit-profile-screen';
@@ -98,4 +101,8 @@ class ProjectRoute {
   static const myAddress = '/my-address-screen';
   static const branches = '/branches-screen';
   static const about = '/about-screen';
+}
+
+class ProjectString {
+  static const customerData = 'customerData';
 }

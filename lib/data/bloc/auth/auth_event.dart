@@ -2,9 +2,14 @@ part of 'auth_bloc.dart';
 
 abstract class AuthEvent extends Equatable {}
 
-class GetCustomer extends AuthEvent {
+class LoadData extends AuthEvent {
+  @override
+  List<Object?> get props => [];
+}
+
+class CheckCustomer extends AuthEvent {
   final String phone;
-  GetCustomer(this.phone);
+  CheckCustomer(this.phone);
   @override
   List<Object?> get props => [phone];
 }
@@ -17,10 +22,18 @@ class RegisterCustomer extends AuthEvent {
   List<Object?> get props => [name, phone];
 }
 
-class ConfirmCode extends AuthEvent {
+class ConfirmRegisterCode extends AuthEvent {
   final String code;
   final String phone;
-  ConfirmCode(this.code, this.phone);
+  ConfirmRegisterCode(this.code, this.phone);
+  @override
+  List<Object?> get props => [code, phone];
+}
+
+class ConfirmLoginCode extends AuthEvent {
+  final String code;
+  final String phone;
+  ConfirmLoginCode(this.code, this.phone);
   @override
   List<Object?> get props => [code, phone];
 }

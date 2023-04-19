@@ -21,7 +21,8 @@ class RegistryName extends StatelessWidget {
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is CustomerRegisterSuccessState) {
-            Navigator.of(context).pushNamed(ProjectRoute.registryGetCode);
+            Navigator.of(context)
+                .pushNamed(ProjectRoute.registryEnterCode, arguments: {'phone': phone, 'name': nameController.text});
           }
         },
         child: Column(

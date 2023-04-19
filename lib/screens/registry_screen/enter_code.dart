@@ -52,7 +52,7 @@ class _GetOtpCodeScreenState extends State<GetOtpCodeScreen> with SingleTickerPr
       appBar: AppBar(),
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
-          if (state is CodeConfirmSuccessState) {
+          if (state is CustomerActiveState) {
             Navigator.of(context).pushNamedAndRemoveUntil(ProjectRoute.homeScreen, (route) => false);
           } else if (state is CodeConfirmErrorState) {
             _formKey.currentState!.validate();
@@ -99,8 +99,8 @@ class _GetOtpCodeScreenState extends State<GetOtpCodeScreen> with SingleTickerPr
                           ? null
                           : () {
                               _pinController.clear();
-                              if (state is GetCustomerSuccessState) {
-                                BlocProvider.of<AuthBloc>(context).add(GetCustomer(state.customer.phone));
+                              if (state is CustomerExistState) {
+                                BlocProvider.of<AuthBloc>(context).add(CheckCustomer(state.customer.phone));
                               } else if (state is CustomerRegisterSuccessState) {
                                 BlocProvider.of<AuthBloc>(context).add(RegisterCustomer(state.name, state.phone));
                               }
@@ -112,19 +112,7 @@ class _GetOtpCodeScreenState extends State<GetOtpCodeScreen> with SingleTickerPr
                 ),
                 CustomButton(
                   title: context.localeString(ProjectLocales.conTinue),
-                  onPressed: () {
-                    if (_code.isEmpty) {
-                      _formKey.currentState!.validate();
-                      return;
-                    }
-                    String finalNumber = '';
-                    if (state is GetCustomerSuccessState) {
-                      finalNumber = state.customer.phone;
-                    } else if (state is CustomerRegisterSuccessState) {
-                      finalNumber = state.phone;
-                    }
-                    BlocProvider.of<AuthBloc>(context).add(ConfirmCode(_code, finalNumber));
-                  },
+                  onPressed: () => _confirmCode(),
                 ),
               ],
             ),
@@ -132,6 +120,19 @@ class _GetOtpCodeScreenState extends State<GetOtpCodeScreen> with SingleTickerPr
         },
       ),
     );
+  }
+
+  _confirmCode() {
+    if (_code.isEmpty) {
+      _formKey.currentState!.validate();
+      return;
+    }
+    Map data = ModalRoute.of(context)!.settings.arguments as Map;
+    if (data['name'] == null) {
+      BlocProvider.of<AuthBloc>(context).add(ConfirmLoginCode(_code, data['phone']));
+    } else {
+      BlocProvider.of<AuthBloc>(context).add(ConfirmRegisterCode(_code, data['phone']));
+    }
   }
 
   _pinTheme({required bool isFocused, Color color = ProjectColors.primary}) {

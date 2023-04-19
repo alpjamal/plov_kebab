@@ -30,7 +30,7 @@ void main() async {
       providers: [
         BlocProvider(create: (_) => DataBloc()..add(LoadInitialData())),
         BlocProvider(create: (_) => FilterCubit()),
-        BlocProvider(create: (_) => AuthBloc()),
+        BlocProvider(create: (_) => AuthBloc()..add(LoadData())),
       ],
       child: MyApp(),
     ),
@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
         routes: {
           ProjectRoute.splashScreen: (context) => SplashScreen(),
           ProjectRoute.registyEnterNumber: (context) => RegistrationScreen(),
-          ProjectRoute.registryGetCode: (context) => GetOtpCodeScreen(),
+          ProjectRoute.registryEnterCode: (context) => GetOtpCodeScreen(),
           ProjectRoute.homeScreen: (context) => HomeScreen(),
           ProjectRoute.settings: (context) => SettingsScreen(),
           ProjectRoute.editProfileScreen: (context) => EditProfileScreen(),

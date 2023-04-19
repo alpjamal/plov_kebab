@@ -7,9 +7,9 @@ class AuthInitial extends AuthState {
   List<Object?> get props => [];
 }
 
-class GetCustomerSuccessState extends AuthState {
+class CustomerExistState extends AuthState {
   final CustomerModel customer;
-  GetCustomerSuccessState(this.customer);
+  CustomerExistState(this.customer);
   @override
   List<Object?> get props => [customer];
 }
@@ -34,11 +34,6 @@ class CustomerRegisterSuccessState extends AuthState {
   CustomerRegisterSuccessState(this.phone, this.name);
   @override
   List<Object?> get props => [phone, name];
-}
-
-class CodeConfirmSuccessState extends AuthState {
-  @override
-  List<Object?> get props => [];
 }
 
 class CodeConfirmErrorState extends AuthState {

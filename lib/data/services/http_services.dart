@@ -36,11 +36,20 @@ class ApiRequest {
   Future<Response> doGetRequest({
     required String path,
     Map<String, dynamic>? query,
+    Map<String, dynamic>? body,
+    String? token,
   }) async {
     final Response response = await dio.get(
       path,
+      data: body,
       queryParameters: query,
-      options: Options(headers: _headers),
+      options: Options(
+        headers: {
+          'shipper': ProjectApi.shipperId,
+          'platform': Platform.isIOS ? ProjectApi.iosPlatformID : ProjectApi.androidPlatformID,
+          'Authorization': token,
+        },
+      ),
     );
     return response;
   }
