@@ -6,15 +6,15 @@ import '../../../utils/constants.dart';
 import '../../global_widgets/container.dart';
 
 class DateField extends StatelessWidget {
-  const DateField({super.key, required this.title});
-  final String title;
+  const DateField({super.key, required this.date});
+  final String date;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        LocaleText(title, style: ProjectTextStyle.input),
+        LocaleText(ProjectLocales.birthDate, style: ProjectTextStyle.input),
         SizedBox(height: 5),
         GestureDetector(
           onTap: () => _showDatePicker(context),
@@ -24,7 +24,7 @@ class DateField extends StatelessWidget {
             child: Center(
               child: ListTile(
                 title: LocaleText(
-                  ProjectLocales.enterBirthDate,
+                  date.isNotEmpty ? date : ProjectLocales.enterBirthDate,
                   style: ProjectTextStyle.input.copyWith(color: Colors.black54),
                 ),
                 trailing: Icon(Icons.date_range),

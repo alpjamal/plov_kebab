@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:plov_kebab/data/models/customer_model.dart';
 import 'package:plov_kebab/screens/global_widgets/button.dart';
 import 'package:plov_kebab/screens/edit_profile_screen/widgets/date_field.dart';
 import 'package:plov_kebab/screens/edit_profile_screen/widgets/input.dart';
@@ -13,14 +14,19 @@ class EditProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var numberController = TextEditingController(text: '+998 ');
+    CustomerModel customer = ModalRoute.of(context)!.settings.arguments as CustomerModel;
+
     final maskFormatter = MaskTextInputFormatter(
-      initialText: '+998 ',
+      initialText: customer.phone,
       mask: '+998 ## ### ## ##',
       filter: {"#": RegExp(r'[0-9]')},
       type: MaskAutoCompletionType.lazy,
     );
+    final nameController = TextEditingController(text: customer.name);
+    final numberController = TextEditingController(text: maskFormatter.getMaskedText());
+
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(title: LocaleText(ProjectLocales.editProfile)),
       body: Column(
         children: [
@@ -31,18 +37,20 @@ class EditProfileScreen extends StatelessWidget {
                 CustomInputSection(
                   title: ProjectLocales.name,
                   textField: TextField(
-                    decoration: InputDecoration(hintText: 'Your name'),
+                    controller: nameController,
+                    decoration: InputDecoration(hintText: 'Enter your name'),
                   ),
                 ),
                 CustomInputSection(
                   title: ProjectLocales.phoneNum,
                   textField: TextField(
                     controller: numberController,
+                    keyboardType: TextInputType.number,
                     decoration: InputDecoration(hintText: 'Enter you phone number'),
                     inputFormatters: [maskFormatter],
                   ),
                 ),
-                DateField(title: ProjectLocales.birthDate),
+                DateField(date: customer.dateOfBirth),
               ],
             ),
           ),

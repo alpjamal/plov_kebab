@@ -28,7 +28,7 @@ class ProfileScreen extends StatelessWidget {
               title: Text(customer!.name, style: ProjectTextStyle.appBar),
               subtitle: Text(customer.phone, style: ProjectTextStyle.input.copyWith(height: 2)),
               trailing: Icon(Icons.edit, color: Colors.grey),
-              onTap: () => Navigator.of(context).pushNamed(ProjectRoute.editProfileScreen),
+              onTap: () => Navigator.of(context).pushNamed(ProjectRoute.editProfileScreen, arguments: customer),
             ),
           ),
           SizedBox(height: ProjectGap.main),
