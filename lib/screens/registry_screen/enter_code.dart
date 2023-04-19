@@ -53,7 +53,7 @@ class _GetOtpCodeScreenState extends State<GetOtpCodeScreen> with SingleTickerPr
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is CodeConfirmSuccessState) {
-            Navigator.of(context).pushReplacementNamed(ProjectRoute.homeScreen);
+            Navigator.of(context).pushNamedAndRemoveUntil(ProjectRoute.homeScreen, (route) => false);
           } else if (state is CodeConfirmErrorState) {
             _formKey.currentState!.validate();
           }

@@ -32,6 +32,7 @@ class ProjectIcon {
   static const uz = 'assets/icons/uz.png';
   static const emptyCart = 'assets/icons/empty_cart.png';
   static const placeholder = 'assets/icons/food_placeholder.png';
+  static const emptyAddress = 'assets/icons/empty_address.png';
 }
 
 class ProjectApi {
@@ -72,6 +73,11 @@ class ProjectLocales {
   static const String enterBirthDate = 'enter_birth';
   static const String yourBirthDate = 'your_birth';
   static const String add = 'add';
+  static const String myAddresses = 'my_addresses';
+  static const String addAddress = 'add_address';
+  static const String noneAddresses = 'none_adresses';
+  static const String branches = 'branches';
+  static const String privacyPolicy = 'privacy_policy';
 }
 
 class ProjectGap {
@@ -89,4 +95,7 @@ class ProjectRoute {
   static const productScreen = '/product-screen';
   static const registryEnterName = '/registry-enter-name';
   static const profileScreen = '/profile-screen';
+  static const myAddress = '/my-address-screen';
+  static const branches = '/branches-screen';
+  static const about = '/about-screen';
 }

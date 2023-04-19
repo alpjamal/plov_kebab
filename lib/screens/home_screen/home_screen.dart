@@ -5,7 +5,6 @@ import 'package:plov_kebab/screens/home_screen/widgets/navbar.dart';
 import 'package:plov_kebab/screens/home_screen/widgets/pages/cart_page.dart';
 import 'package:plov_kebab/screens/home_screen/widgets/pages/home_page.dart';
 import 'package:plov_kebab/screens/home_screen/widgets/pages/my_orders_page.dart';
-import 'package:plov_kebab/screens/profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

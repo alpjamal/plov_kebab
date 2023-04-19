@@ -24,3 +24,8 @@ class ConfirmCode extends AuthEvent {
   @override
   List<Object?> get props => [code, phone];
 }
+
+class LogOut extends AuthEvent {
+  @override
+  List<Object?> get props => [];
+}

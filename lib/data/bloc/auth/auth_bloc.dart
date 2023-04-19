@@ -13,6 +13,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<GetCustomer>(_getCustommerByPhone);
     on<RegisterCustomer>(_registerCustommer);
     on<ConfirmCode>(_registerConfirm);
+    on<LogOut>(_logout);
   }
 
   _getCustommerByPhone(GetCustomer event, emit) async {
@@ -39,8 +40,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       final response = await _authRepo.getCustommerByPhone(event.phone);
       emit(CustomerActiveState(response));
     } catch (error) {
-      print('--------------------$error--------------------');
       emit(CodeConfirmErrorState());
     }
+  }
+
+  _logout(LogOut event, emit) async {
+    emit(AuthInitial());
   }
 }

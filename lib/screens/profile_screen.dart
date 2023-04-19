@@ -34,13 +34,13 @@ class ProfileScreen extends StatelessWidget {
           CustomContainer(
             child: Column(
               children: [
-                _listTile(context, Icons.location_on_outlined, 'My address', ''),
+                _listTile(context, Icons.location_on_outlined, 'My address', ProjectRoute.myAddress),
                 Divider(),
-                _listTile(context, Icons.pin_drop, 'Branches', ''),
+                _listTile(context, Icons.pin_drop, 'Branches', ProjectRoute.branches),
                 Divider(),
                 _listTile(context, Icons.settings, 'Settings', ProjectRoute.settings),
                 Divider(),
-                _listTile(context, Icons.info_outline, 'About the service', ''),
+                _listTile(context, Icons.info_outline, 'About the service', ProjectRoute.about),
               ],
             ),
           ),

@@ -38,5 +38,9 @@
     "enter_birth": "Enter your date of birth",
     "your_birth": "Your date of birth",
     "add": "Add",
+    "add_address": "+ Add address",
+    "none_adresses": "You have no addresses",
+    "branches": "Branches",
+    "privacy_policy": "Privacy policy",
     "": ""
 }
