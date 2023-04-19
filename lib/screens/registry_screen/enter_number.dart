@@ -5,7 +5,6 @@ import 'package:plov_kebab/data/bloc/auth/auth_bloc.dart';
 import 'package:plov_kebab/screens/global_widgets/container.dart';
 import 'package:plov_kebab/utils/constants.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-
 import '../global_widgets/button.dart';
 
 class RegistrationScreen extends StatelessWidget {
@@ -50,6 +49,7 @@ class RegistrationScreen extends StatelessWidget {
                       controller: numberController,
                       keyboardType: TextInputType.number,
                       inputFormatters: [maskFormatter],
+                      autofocus: true,
                       validator: (value) {
                         if (value!.length != 17) {
                           return 'Enter valid number';

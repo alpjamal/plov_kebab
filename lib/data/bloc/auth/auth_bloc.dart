@@ -39,6 +39,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       final response = await _authRepo.getCustommerByPhone(event.phone);
       emit(CustomerActiveState(response));
     } catch (error) {
+      print('--------------------$error--------------------');
       emit(CodeConfirmErrorState());
     }
   }

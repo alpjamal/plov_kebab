@@ -3,11 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:plov_kebab/data/bloc/auth/auth_bloc.dart';
 import 'package:plov_kebab/data/bloc/filter_category/filter_cubit.dart';
-import 'package:plov_kebab/data/bloc/nav_bar/nav_bar_cubit.dart';
 import 'package:plov_kebab/screens/account_screen.dart';
+import 'package:plov_kebab/screens/edit_profile_screen/edit_profile_screen.dart';
 import 'package:plov_kebab/screens/home_screen/home_screen.dart';
+import 'package:plov_kebab/screens/profile_screen.dart';
 import 'package:plov_kebab/screens/product_screen/product_screen.dart';
-import 'package:plov_kebab/screens/profile_screen/profile_screen.dart';
 import 'package:plov_kebab/screens/registry_screen/erter_name.dart';
 import 'package:plov_kebab/screens/settings_screen.dart';
 import 'package:plov_kebab/utils/constants.dart';
@@ -25,7 +25,6 @@ void main() async {
   runApp(
     MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => NavBarCubit()),
         BlocProvider(create: (_) => DataBloc()..add(LoadInitialData())),
         BlocProvider(create: (_) => FilterCubit()),
         BlocProvider(create: (_) => AuthBloc()),
@@ -54,10 +53,12 @@ class MyApp extends StatelessWidget {
           ProjectRoute.registryGetCode: (context) => GetOtpCodeScreen(),
           ProjectRoute.homeScreen: (context) => HomeScreen(),
           ProjectRoute.settings: (context) => SettingsScreen(),
-          ProjectRoute.editProfile: (context) => EditProfileScreen(),
+          ProjectRoute.editProfileScreen: (context) => EditProfileScreen(),
           ProjectRoute.manageAccount: (context) => ManageAccountScreen(),
           ProjectRoute.productScreen: (context) => ProductScreen(),
           ProjectRoute.registryEnterName: (context) => RegistryName(),
+          ProjectRoute.profileScreen: (context) => ProfileScreen(),
+
         },
       );
     });

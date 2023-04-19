@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
-import 'package:plov_kebab/screens/profile_screen/widgets/date_bottom_sheet.dart';
+import 'package:plov_kebab/screens/edit_profile_screen/widgets/date_bottom_sheet.dart';
 
 import '../../../utils/constants.dart';
 import '../../global_widgets/container.dart';

@@ -39,9 +39,10 @@ class _GetOtpCodeScreenState extends State<GetOtpCodeScreen> with SingleTickerPr
 
   @override
   void dispose() {
-    super.dispose();
     _timerController.finish();
+    _timerController.dispose();
     _pinController.dispose();
+    super.dispose();
   }
 
   @override
@@ -52,85 +53,83 @@ class _GetOtpCodeScreenState extends State<GetOtpCodeScreen> with SingleTickerPr
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is CodeConfirmSuccessState) {
-            Navigator.of(context).pushNamed(ProjectRoute.homeScreen);
+            Navigator.of(context).pushReplacementNamed(ProjectRoute.homeScreen);
           } else if (state is CodeConfirmErrorState) {
             _formKey.currentState!.validate();
           }
         },
-        builder: (context, state) => Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              CustomContainer(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    LocaleText(ProjectLocales.registration, style: ProjectTextStyle.registry),
-                    SizedBox(height: 16),
-                    Center(
-                      child: Pinput(
-                        pinputAutovalidateMode: PinputAutovalidateMode.disabled,
-                        controller: _pinController,
-                        keyboardType: TextInputType.number,
-                        length: 6,
-                        defaultPinTheme: _pinTheme(isFocused: false),
-                        closeKeyboardWhenCompleted: true,
-                        focusedPinTheme: _pinTheme(isFocused: true),
-                        errorPinTheme: _pinTheme(isFocused: true, color: Colors.red),
-                        onChanged: (value) => _code = value,
-                        validator: (value) {
-                          if (_code.isEmpty) {
-                            return 'Enter the code';
-                          }
-                          return 'Wrong code';
-                        },
-                        cursor: CustomCursor(),
+        builder: (context, state) {
+          return Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                CustomContainer(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      LocaleText(ProjectLocales.registration, style: ProjectTextStyle.registry),
+                      SizedBox(height: 16),
+                      Center(
+                        child: Pinput(
+                          pinputAutovalidateMode: PinputAutovalidateMode.disabled,
+                          controller: _pinController,
+                          keyboardType: TextInputType.number,
+                          length: 6,
+                          autofocus: true,
+                          defaultPinTheme: _pinTheme(isFocused: false),
+                          closeKeyboardWhenCompleted: true,
+                          focusedPinTheme: _pinTheme(isFocused: true),
+                          errorPinTheme: _pinTheme(isFocused: true, color: Colors.red),
+                          onChanged: (value) => _code = value,
+                          validator: (value) => 'Wrong code',
+                          cursor: CustomCursor(),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              Spacer(),
-              CustomTimer(
-                controller: _timerController,
-                builder: (timerState, time) {
-                  bool timerRunning = time.duration.inSeconds > 0;
-                  return TextButton(
-                    style: TextButton.styleFrom(padding: EdgeInsets.zero),
-                    onPressed: timerRunning
-                        ? null
-                        : () {
-                            _pinController.clear();
-                            if (state is GetCustomerSuccessState) {
-                              BlocProvider.of<AuthBloc>(context).add(GetCustomer(state.customer.phone));
-                            } else if (state is CustomerRegisterSuccessState) {
-                              BlocProvider.of<AuthBloc>(context).add(RegisterCustomer(state.name, state.phone));
-                            }
-                          },
-                    child: Text(timerRunning ? '${time.minutes}:${time.seconds}' : 'Resend SMS code',
-                        style: TextStyle(color: Colors.black)),
-                  );
-                },
-              ),
-              CustomButton(
-                title: context.localeString(ProjectLocales.conTinue),
-                onPressed: () {
-                  if (_code.isEmpty) {
-                    _formKey.currentState!.validate();
-                    return;
-                  }
-                  String finalNumber = '';
-                  if (state is GetCustomerSuccessState) {
-                    finalNumber = state.customer.phone;
-                  } else if (state is CustomerRegisterSuccessState) {
-                    finalNumber = state.phone;
-                  }
-                  BlocProvider.of<AuthBloc>(context).add(ConfirmCode(_code, finalNumber));
-                },
-              ),
-            ],
-          ),
-        ),
+                Spacer(),
+                CustomTimer(
+                  controller: _timerController,
+                  builder: (timerState, time) {
+                    bool timerRunning = time.duration.inSeconds > 0;
+                    return TextButton(
+                      style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                      onPressed: timerRunning
+                          ? null
+                          : () {
+                              _pinController.clear();
+                              if (state is GetCustomerSuccessState) {
+                                BlocProvider.of<AuthBloc>(context).add(GetCustomer(state.customer.phone));
+                              } else if (state is CustomerRegisterSuccessState) {
+                                BlocProvider.of<AuthBloc>(context).add(RegisterCustomer(state.name, state.phone));
+                              }
+                            },
+                      child: Text(timerRunning ? '${time.minutes}:${time.seconds}' : 'Resend SMS code',
+                          style: TextStyle(color: Colors.black)),
+                    );
+                  },
+                ),
+                CustomButton(
+                  title: context.localeString(ProjectLocales.conTinue),
+                  onPressed: () {
+                    if (_code.isEmpty) {
+                      _formKey.currentState!.validate();
+                      return;
+                    }
+                    String finalNumber = '';
+                    if (state is GetCustomerSuccessState) {
+                      finalNumber = state.customer.phone;
+                    } else if (state is CustomerRegisterSuccessState) {
+                      finalNumber = state.phone;
+                    }
+                    BlocProvider.of<AuthBloc>(context).add(ConfirmCode(_code, finalNumber));
+                  },
+                ),
+              ],
+            ),
+          );
+        },
       ),
     );
   }

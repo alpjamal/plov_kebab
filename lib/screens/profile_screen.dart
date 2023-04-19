@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
+import 'package:plov_kebab/data/models/customer_model.dart';
 import 'package:plov_kebab/screens/global_widgets/container.dart';
 
 import '../../../../utils/constants.dart';
 
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var data = ModalRoute.of(context)!.settings.arguments;
+    CustomerModel? customer;
+    if (data != null) {
+      customer = data as CustomerModel;
+    }
+
     return Scaffold(
       appBar: AppBar(title: LocaleText(ProjectLocales.profile)),
       body: Column(
@@ -17,10 +24,10 @@ class ProfilePage extends StatelessWidget {
           CustomContainer(
             child: ListTile(
               contentPadding: EdgeInsets.zero,
-              title: Text('Name', style: ProjectTextStyle.appBar),
-              subtitle: Text('+998 90 000 00 00', style: ProjectTextStyle.input.copyWith(height: 2)),
+              title: Text(customer!.name, style: ProjectTextStyle.appBar),
+              subtitle: Text(customer.phone, style: ProjectTextStyle.input.copyWith(height: 2)),
               trailing: Icon(Icons.edit, color: Colors.grey),
-              onTap: () => Navigator.of(context).pushNamed(ProjectRoute.editProfile),
+              onTap: () => Navigator.of(context).pushNamed(ProjectRoute.editProfileScreen),
             ),
           ),
           SizedBox(height: ProjectGap.main),

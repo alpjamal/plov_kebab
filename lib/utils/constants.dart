@@ -84,8 +84,9 @@ class ProjectRoute {
   static const registryGetCode = '/get-otp-code-screen';
   static const homeScreen = '/home-screen';
   static const settings = '/settings-screen';
-  static const editProfile = '/profile-screen';
+  static const editProfileScreen = '/edit-profile-screen';
   static const manageAccount = '/manage-account-screen';
   static const productScreen = '/product-screen';
   static const registryEnterName = '/registry-enter-name';
+  static const profileScreen = '/profile-screen';
 }

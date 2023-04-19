@@ -2,25 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:plov_kebab/data/bloc/auth/auth_bloc.dart';
-import 'package:plov_kebab/data/bloc/nav_bar/nav_bar_cubit.dart';
 import 'package:plov_kebab/utils/constants.dart';
 
 class BottomNavBar extends StatelessWidget {
-  const BottomNavBar({super.key});
+  const BottomNavBar({super.key, required this.activeIndex, required this.changeIndex});
+  final int activeIndex;
+  final Function changeIndex;
 
   @override
   Widget build(BuildContext context) {
-    final controller = BlocProvider.of<NavBarCubit>(context, listen: false);
-    return BlocBuilder<NavBarCubit, NavBarState>(
+    return BlocBuilder<AuthBloc, AuthState>(
       builder: (context, state) {
-        state = state as NavBarInitial;
         return BottomNavigationBar(
-          currentIndex: state.index,
+          currentIndex: activeIndex,
           onTap: (value) {
-            if (value == 3 && state is CustomerActiveState) {
-              Navigator.of(context).pushNamed(ProjectRoute.editProfile);
+            if (state is! CustomerActiveState && (value == 2 || value == 3)) {
+              Navigator.of(context).pushNamed(ProjectRoute.registyEnterNumber);
+            } else if (state is CustomerActiveState && value == 3) {
+              Navigator.of(context).pushNamed(ProjectRoute.profileScreen, arguments: state.customer);
             } else {
-              controller.changeTab(value);
+              changeIndex(value);
             }
           },
           items: [
