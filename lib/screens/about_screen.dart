@@ -9,7 +9,7 @@ class AboutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: LocaleText(ProjectLocales.branches)),
+      appBar: AppBar(title: LocaleText(ProjectLocales.about)),
       body: Padding(
         padding: EdgeInsets.all(ProjectGap.main),
         child: Column(

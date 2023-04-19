@@ -6,9 +6,7 @@ class CustomBackButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () { 
-        Navigator.of(context).pop();
-      },
+      onTap: () => Navigator.of(context).pop(),
       child: Container(
         padding: EdgeInsets.fromLTRB(18, 12, 12, 12),
         decoration: BoxDecoration(

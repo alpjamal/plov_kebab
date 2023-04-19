@@ -81,6 +81,7 @@ class ProjectLocales {
   static const String noneAddresses = 'none_adresses';
   static const String branches = 'branches';
   static const String privacyPolicy = 'privacy_policy';
+  static const String about = 'about';
 }
 
 class ProjectGap {

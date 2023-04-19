@@ -4,6 +4,7 @@ import 'package:plov_kebab/data/models/customer_model.dart';
 import 'package:plov_kebab/screens/global_widgets/container.dart';
 
 import '../../../../utils/constants.dart';
+import 'global_widgets/list_tile.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -34,13 +35,28 @@ class ProfileScreen extends StatelessWidget {
           CustomContainer(
             child: Column(
               children: [
-                _listTile(context, Icons.location_on_outlined, 'My address', ProjectRoute.myAddress),
+                CustomListTile(
+                  title: ProjectLocales.myAddresses,
+                  icon: Icons.location_on_outlined,
+                  routeName: ProjectRoute.myAddress,
+                ),
                 Divider(),
-                _listTile(context, Icons.pin_drop, 'Branches', ProjectRoute.branches),
+                CustomListTile(
+                  title: ProjectLocales.branches,
+                  icon: Icons.pin_drop,
+                  routeName: ProjectRoute.branches,
+                ),
                 Divider(),
-                _listTile(context, Icons.settings, 'Settings', ProjectRoute.settings),
-                Divider(),
-                _listTile(context, Icons.info_outline, 'About the service', ProjectRoute.about),
+                CustomListTile(
+                  title: ProjectLocales.settings,
+                  icon: Icons.settings,
+                  routeName: ProjectRoute.settings,
+                ),
+                CustomListTile(
+                  title: ProjectLocales.about,
+                  icon: Icons.info_outline,
+                  routeName: ProjectRoute.about,
+                ),
               ],
             ),
           ),
@@ -48,16 +64,5 @@ class ProfileScreen extends StatelessWidget {
       ),
     );
   }
-
-  _listTile(ctx, IconData leading, String title, String routeName) {
-    return ListTile(
-      contentPadding: EdgeInsets.zero,
-      title: Text(title),
-      leading: Icon(leading, size: 30, color: Colors.black),
-      trailing: Icon(Icons.arrow_forward_ios, size: 18),
-      onTap: () {
-        Navigator.of(ctx).pushNamed(routeName);
-      },
-    );
-  }
 }
+
