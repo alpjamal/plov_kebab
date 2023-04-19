@@ -18,8 +18,6 @@ class BottomNavBar extends StatelessWidget {
           onTap: (value) {
             if (state is! CustomerActiveState && (value == 2 || value == 3)) {
               Navigator.of(context).pushNamed(ProjectRoute.registyEnterNumber);
-            } else if (state is CustomerActiveState && value == 3) {
-              Navigator.of(context).pushNamed(ProjectRoute.profileScreen, arguments: state.customer);
             } else {
               changeIndex(value);
             }

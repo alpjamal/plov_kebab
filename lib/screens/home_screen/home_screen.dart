@@ -5,6 +5,7 @@ import 'package:plov_kebab/screens/home_screen/widgets/navbar.dart';
 import 'package:plov_kebab/screens/home_screen/widgets/pages/cart_page.dart';
 import 'package:plov_kebab/screens/home_screen/widgets/pages/home_page.dart';
 import 'package:plov_kebab/screens/home_screen/widgets/pages/my_orders_page.dart';
+import 'package:plov_kebab/screens/profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -31,6 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
               HomePage(),
               CartPage(changeIndex: _changeIndex),
               if (state is CustomerActiveState) MyOrdersPage(),
+              if (state is CustomerActiveState) ProfileScreen(customer: state.customer),
             ],
           ),
           bottomNavigationBar: BottomNavBar(changeIndex: _changeIndex, activeIndex: _index),
